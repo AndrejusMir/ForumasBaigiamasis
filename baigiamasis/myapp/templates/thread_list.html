@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/forum.css' %}" type="text/css">
+  <!-- Add Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+{% endblock head %}
+
+{% block title %}{{ subforum.name }}{% endblock title %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="display-5">{{ subforum.name }}</h2>
+    <div class="list-group">
+      {% for thread in threads %}
+        <a href="{% url 'thread_detail' thread.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <div class="media">
+              <!-- Add a placeholder for the random icon -->
+              <i class="icon-placeholder fas fa-2x mr-3 align-self-start"></i>
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">{{ thread.title }}</h5>
+                Last post by {{ thread.posts.last.author.username }} on {{ thread.posts.last.created_at|date:"N j, Y" }}
+              </div>
+            </div>
+            <small class="text-muted">{{ thread.posts_count }} posts</small>
+          </div>
+        </a>
+      {% empty %}
+        <div class="alert alert-light" role="alert">
+          No threads to display.
+        </div>
+      {% endfor %}
+    </div>
+    <a href="{% url 'new_thread' subforum.id %}" class="btn btn-primary mt-3">New Thread</a>
+  </div>
+
+  <!-- Add JavaScript at the end of the body to handle random icons -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var icons = ['fa-comment', 'fa-comments', 'fa-comment-alt', 'fa-comment-dots', 'fa-comment-slash'];
+      var iconPlaceholders = document.querySelectorAll('.icon-placeholder');
+      iconPlaceholders.forEach(function(iconPlaceholder) {
+        var randomIcon = icons[Math.floor(Math.random() * icons.length)];
+        iconPlaceholder.classList.add(randomIcon);
+      });
+    });
+  </script>
+{% endblock %}

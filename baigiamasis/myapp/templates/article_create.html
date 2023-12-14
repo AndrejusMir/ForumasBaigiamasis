@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4">Create New Article</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_title">Title</label>
+                    {{ article_form.title|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="id_content">Content</label>
+                    {{ article_form.content|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    {{ formset.management_form }}
+                    {% for form in formset %}
+                        <div class="mb-3">
+                            <label>Image</label>
+                            {{ form.image|add_class:"form-control-file" }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

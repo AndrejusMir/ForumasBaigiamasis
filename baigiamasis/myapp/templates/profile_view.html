@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>User Profile</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ profile_user.profile.avatar.url }}" alt="{{ profile_user.username }}'s avatar" class="img-thumbnail">
+        </div>
+        <div class="col-md-8">
+            <p><strong>Username:</strong> {{ profile_user.username }}</p>
+            <p><strong>Email:</strong> {{ profile_user.email }}</p>
+            <p><strong>Date of Birth:</strong> {{ profile_user.profile.birth_date|date:"Y/m/d" }}</p>
+            <p><strong>Gender:</strong> {{ profile_user.profile.gender }}</p>
+            <p><strong>Country:</strong> {{ profile_user.profile.get_country_display }}</p>
+            <p><strong>Twitter:</strong> {{ profile_user.profile.twitter }}</p>
+            <p><strong>Discord:</strong> {{ profile_user.profile.discord }}</p>
+            <p><strong>Skype:</strong> {{ profile_user.profile.skype }}</p>
+            <p><strong>Telegram:</strong> {{ profile_user.profile.telegram }}</p>
+            <p><strong>Instagram:</strong> {{ profile_user.profile.instagram }}</p>
+            <p><strong>Facebook:</strong> {{ profile_user.profile.facebook }}</p>
+            <p><strong>Website:</strong> {{ profile_user.profile.website }}</p>
+            {% if request.user == profile_user %}
+                <a href="{% url 'edit_profile' %}" class="btn btn-info">Edit Profile</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

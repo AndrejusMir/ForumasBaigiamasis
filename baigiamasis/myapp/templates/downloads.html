@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Downloads{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <img src="{{ program.thumbnail_url.url }}" class="card-img-top" alt="Thumbnail for {{ program.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ program.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ program.date }}</h6>
+          <p class="card-text">{{ program.description }}</p>
+          <a href="{% url 'password_generator' program_id=program.id %}" class="btn btn-success" download="Password_Generator.exe">Download {{ program.name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

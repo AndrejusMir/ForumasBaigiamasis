@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <img src="{{ article.thumbnail_image }}" class="card-img-top" alt="Thumbnail for {{ article.title }}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.summary }}</p>
+                    <a href="{% url 'article_detail' article.pk %}" class="btn btn-primary mt-auto">Continue reading</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ article.date_published }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row justify-content-between mt-4">
+        <div class="col-auto">
+            {% if user.is_authenticated %}
+                <a href="{% url 'article_create' %}" class="btn btn-success">Add Article</a>
+            {% endif %}
+        </div>
+
+        <div class="col-auto">
+            <div class="pagination">
+                {% if articles.has_previous %}
+                    <a class="btn btn-light" href="?page=1">&laquo; First</a>
+                    <a class="btn btn-light" href="?page={{ articles.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                <span class="current-page btn btn-light disabled">Page {{ articles.number }} of {{ articles.paginator.num_pages }}</span>
+
+                {% if articles.has_next %}
+                    <a class="btn btn-light" href="?page={{ articles.next_page_number }}">Next</a>
+                    <a class="btn btn-light" href="?page={{ articles.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

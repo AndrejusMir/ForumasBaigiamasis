@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Home - My Website{% endblock %}
+
+{% block content %}
+  <h1>Welcome to TecSite</h1>
+<img src="{% static 'images/main-image.png' %}" alt="Welcome Image" style="width: 100%; max-width: 900px; height: auto;">
+{% endblock %}

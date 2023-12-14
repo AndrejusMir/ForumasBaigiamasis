@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/forum.css' %}" type="text/css">
+{% endblock head %}
+
+{% block content %}
+<div class="forum-container">
+  <h1 class="forum-header">Forum List</h1>
+  <div class="forum-list">
+    {% for subforum in subforums %}
+      <div class="forum-entry">
+        <a href="{% url 'thread_list' subforum.id %}" class="forum-title-link">
+          <h2 class="forum-title">{{ subforum.name }}</h2>
+        </a>
+        <p class="forum-description">{{ subforum.description }}</p>
+        <div class="forum-meta">
+          <span>{{ subforum.threads_count }} Threads</span>
+          <span>{{ subforum.posts_count }} Messages</span>
+        </div>
+      </div>
+    {% empty %}
+      <p class="no-subforums">No subforums available.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

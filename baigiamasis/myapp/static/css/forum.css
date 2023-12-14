@@ -1,0 +1,194 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.forum-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.forum-header {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.forum-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.forum-entry {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.forum-title-link {
+  text-decoration: none;
+  color: #0056b3; /* Adjust the color to match your design */
+}
+
+.forum-title {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.forum-description {
+  font-size: 1em;
+  color: #666;
+}
+
+.forum-meta {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 10px;
+}
+
+.no-subforums {
+  font-size: 1em;
+  color: #888;
+}
+
+.post-entry {
+  display: flex;
+  align-items: flex-start; /* Align the avatar and post content */
+  margin-bottom: 20px;
+}
+
+.user-card {
+  margin-right: 20px;
+}
+
+.user-avatar img {
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+}
+
+.user-info {
+  text-align: center;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.user-role, .join-date, .stats {
+  font-size: 0.8em;
+}
+
+.posts-count, .likes-count {
+  display: block;
+}
+
+.thread-detail-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.thread-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.post-meta {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.post-author {
+  font-weight: bold;
+}
+
+.post-content {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.post-actions a {
+  margin-right: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.post-actions a:hover {
+  text-decoration: underline;
+}
+
+.new-post-textarea {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Add custom styles for the post container and user card here */
+
+.post-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+/* Ensure user-card includes styles for user details next to each post */
+.user-card {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: auto;
+}
+
+.user-details .username {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.user-details .user-role,
+.user-details .join-date,
+.user-details .stats {
+  font-size: 0.8em;
+}
+
+/* Additional styles for the post itself */
+.post-content {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+/* Fix the like count not displaying */
+.likes-count {
+  font-size: 0.9em;
+}
+
+.highlight-reply {
+    background-color: #f0f0f0; /* Light grey background */
+    border-left: 4px solid #007bff; /* Blue border on the left */
+    padding-left: 10px; /* Some padding on the left */

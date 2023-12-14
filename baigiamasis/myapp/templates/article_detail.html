@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="mb-3">{{ article.title }}</h1>
+
+            <div class="article-content mb-3">
+                {{ article.content | safe }}
+            </div>
+
+            <div class="article-images">
+                {% for image in article.images.all %}
+                <img src="{{ image.image.url }}" class="img-fluid mb-2" alt="Image for {{ article.title }}" style="max-width: 50%; height: auto;">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
